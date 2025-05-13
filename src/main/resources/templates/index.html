@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна сторінка</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+    <!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            padding: 40px;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            font-size: 28px;-->
+<!--        }-->
+<!--        ul {-->
+<!--            list-style-type: none;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--        li {-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+<!--        a {-->
+<!--            text-decoration: none;-->
+<!--            color: #007BFF;-->
+<!--            font-size: 18px;-->
+<!--        }-->
+<!--        a:hover {-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+
+<h1>Кулінарний довідник</h1>
+<p>Виберіть дію:</p>
+
+<ul>
+    <li><a th:href="@{/recipes}">📋 Переглянути всі рецепти</a></li>
+    <li><a th:href="@{/favorites}">⭐ Обрані рецепти</a></li>
+    <li><a th:href="@{/create}">➕ Створити новий рецепт</a></li>
+    <li><a th:href="@{/import-form}">📁 Імпорт / Експорт рецептів</a></li>
+</ul>
+
+</body>
+</html>

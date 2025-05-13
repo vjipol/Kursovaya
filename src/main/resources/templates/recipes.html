@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Список рецептів</title>
+  <link rel="stylesheet" th:href="@{/style.css}" />
+
+<!--  <style>-->
+<!--    table, th, td {-->
+<!--      border: 1px solid black;-->
+<!--      border-collapse: collapse;-->
+<!--      padding: 8px;-->
+<!--    }-->
+<!--    button {-->
+<!--      margin-right: 5px;-->
+<!--    }-->
+<!--    form.inline {-->
+<!--      display: inline;-->
+<!--    }-->
+  </style>
+</head>
+<body>
+<h1>Список рецептів</h1>
+
+<form th:action="@{/search/title}" method="get">
+  <input type="text" name="keyword" placeholder="Пошук за назвою" required />
+  <button type="submit">Пошук</button>
+</form>
+&nbsp;
+<form th:action="@{/search/ingredient}" method="get">
+  <input type="text" name="keyword" placeholder="Пошук за інгредієнтом" required />
+  <button type="submit">Пошук</button>
+</form>
+&nbsp;
+<form th:action="@{/category}" method="get">
+  <input type="text" name="category" placeholder="Фільтр за категорією" required />
+  <button type="submit">Фільтрувати</button>
+</form>
+
+<form th:action="@{/recipes}" method="get" style="margin-top: 20px;">
+  <button type="submit">Показати всі рецепти</button>
+</form>
+
+
+<div style="text-align: center; margin-bottom: 10px;">
+  <form th:action="@{/import-form}" method="get" class="inline">
+    <button type="submit">Імпорт/Експорт рецептів</button>
+  </form>
+  &nbsp;
+  <form th:action="@{/create}" method="get" class="inline">
+    <button type="submit">Створити новий рецепт</button>
+  </form>
+</div>
+
+<form th:action="@{/batch-action}" method="post">
+  <label>
+    <select name="action">
+      <option value="favorite">В обране</option>
+      <option value="delete">Видалити</option>
+    </select>
+  </label>
+  <button type="submit">Застосувати до обраних</button>
+
+  <table>
+    <thead>
+    <tr>
+      <th>✓</th>
+      <th>Назва</th>
+      <th>Інгредієнти</th>
+      <th>Опис</th>
+      <th>Категорія</th>
+      <th>Посилання</th>
+      <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+      <td><label>
+        <input type="checkbox" name="recipeIds" th:value="${recipe.id}" />
+      </label></td>
+      <td th:text="${recipe.title}"></td>
+      <td th:text="${recipe.ingredients}"></td>
+      <td th:text="${recipe.description}"></td>
+      <td th:text="${recipe.category}"></td>
+      <td><a th:href="${recipe.link}" target="_blank">Перейти</a></td>
+      <td>
+        <form th:action="@{'/edit/' + ${recipe.id}}" method="get" class="inline">
+          <button type="submit">Редагувати</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+</form>
+
+<br/>
+
+<form th:action="@{/}" method="get">
+  <button type="submit">Назад на головну</button>
+</form>
+
+</body>
+</html>

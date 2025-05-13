@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <title>Імпорт / Експорт рецептів</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/style.css}" />
+<!--  <style>-->
+<!--    body {-->
+<!--      font-family: Arial, sans-serif;-->
+<!--      text-align: center;-->
+<!--      padding: 40px;-->
+<!--    }-->
+
+<!--    h2 {-->
+<!--      margin-bottom: 20px;-->
+<!--    }-->
+
+<!--    form {-->
+<!--      margin: 20px auto;-->
+<!--    }-->
+
+<!--    button {-->
+<!--      padding: 10px 20px;-->
+<!--      font-size: 16px;-->
+<!--      cursor: pointer;-->
+<!--    }-->
+
+<!--    input[type="file"] {-->
+<!--      margin-bottom: 10px;-->
+<!--    }-->
+<!--  </style>-->
+</head>
+<body>
+
+<h2>Імпорт рецептів з CSV</h2>
+<form th:action="@{/import}" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".csv" required>
+  <br>
+  <button type="submit">Імпортувати</button>
+</form>
+
+<h2>Экспорт рецептів в CSV</h2>
+<form th:action="@{/export}" method="get">
+  <button type="submit">Експортувати рецепти</button>
+</form>
+
+
+<form th:action="@{/}" method="get">
+  <button type="submit">Назад на головну</button>
+</form>
+
+</body>
+</html>

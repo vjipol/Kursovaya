@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Редагувати рецепт</title>
+  <link rel="stylesheet" th:href="@{/style.css}" />
+
+<!--  <style>-->
+<!--    button {-->
+<!--      padding: 8px 16px;-->
+<!--      margin-top: 10px;-->
+<!--      cursor: pointer;-->
+<!--    }-->
+<!--  </style>-->
+</head>
+<body>
+<h1>Редагування рецепта</h1>
+
+<form th:action="@{'/save'}" th:object="${recipe}" method="post">
+  <input type="hidden" th:field="*{id}" />
+
+  <label for="title">Назва:</label>
+  <input type="text" id="title" th:field="*{title}" required /><br/><br/>
+
+  <label for="ingredients">Інгредієнти:</label><br/>
+  <textarea id="ingredients" th:field="*{ingredients}" rows="5" cols="50" required></textarea><br/><br/>
+
+  <label for="description">Опис:</label><br/>
+  <textarea id="description" th:field="*{description}" rows="7" cols="50"></textarea><br/><br/>
+
+  <label for="link">Посилання на джерело:</label>
+  <input type="text" id="link" th:field="*{link}" /><br/><br/>
+
+  <label for="category">Категорія:</label>
+  <input type="text" id="category" th:field="*{category}" /><br/><br/>
+
+  <button type="submit">Зберегти зміни</button>
+</form>
+
+<form th:action="@{/recipes}" method="get" style="margin-top: 20px;">
+  <button type="submit">Повернутись до списку рецептів</button>
+</form>
+
+</body>
+</html>

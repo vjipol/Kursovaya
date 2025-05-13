@@ -1,0 +1,45 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px;
+}
+
+input, textarea, select, button {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #555;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+button:hover {
+    background-color: #444;
+}
+
+a {
+    color: #81c784;
+}
+
+form.inline {
+    display: inline;
+}

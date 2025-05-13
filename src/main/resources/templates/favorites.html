@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Обрані рецепти</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+<!--    <style>-->
+<!--        table, th, td {-->
+<!--            border: 1px solid black;-->
+<!--            border-collapse: collapse;-->
+<!--            padding: 8px;-->
+<!--        }-->
+<!--        button {-->
+<!--            margin-right: 5px;-->
+<!--        }-->
+<!--        form.inline {-->
+<!--            display: inline;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<h1>Обрані рецепти</h1>
+
+<form th:action="@{/favorite-action}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>✓</th>
+            <th>Назва</th>
+            <th>Інгредієнти</th>
+            <th>Опис</th>
+            <th>Категорія</th>
+            <th>Посилання</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td><label>
+                <input type="checkbox" name="recipeIds_2" th:value="${recipe.id}" />
+            </label></td>
+            <td th:text="${recipe.title}"></td>
+            <td th:text="${recipe.ingredients}"></td>
+            <td th:text="${recipe.description}"></td>
+            <td th:text="${recipe.category}"></td>
+            <td><a th:href="${recipe.link}" target="_blank">Перейти</a></td>
+            <td>
+                <form th:action="@{'/edit/' + ${recipe.id}}" method="get" class="inline">
+                    <button type="submit">Редагувати</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <label>
+        <select name="action">
+            <option value="remove-favorite">Видалити з обраного</option>
+        </select>
+    </label>
+    <button type="submit">Застосувати до обраних</button>
+</form>
+
+<br/>
+<form th:action="@{/recipes}" method="get" class="inline">
+    <button type="submit">Повернутись до всіх рецептів</button>
+</form>
+</body>
+</html>
